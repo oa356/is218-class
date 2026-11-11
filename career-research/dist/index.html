@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An IS218 career research site comparing customer-facing AI delivery with applied AI research, grounded in three original employer descriptions.">
+  <title>From Prototype to Production · IS218 Career Research</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #102b22;
+      --muted: #435d51;
+      --paper: #f9f8ef;
+      --panel: #fffef8;
+      --line: #c8d1bd;
+      --green: #112f24;
+      --lime: #dcf392;
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.62 var(--sans); }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:hover { text-decoration-thickness: .15em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #587b25; outline-offset: 5px; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2 { font-family: var(--serif); font-weight: 400; line-height: .98; letter-spacing: -.045em; }
+    h1 { font-size: clamp(3rem, 7.4vw, 7.6rem); }
+    h2 { font-size: clamp(2.35rem, 5vw, 4.65rem); }
+    h3 { font-size: 1.23rem; line-height: 1.25; }
+    .wrap { width: min(1180px, 100% - 3rem); margin-inline: auto; }
+    .skip { position: fixed; inset: .75rem auto auto .75rem; z-index: 2; padding: .6rem; background: var(--lime); transform: translateY(-160%); }
+    .skip:focus { transform: none; }
+    .top { border-bottom: 1px solid var(--line); }
+    .top .wrap, footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .7rem 2rem; padding-block: .95rem; }
+    .brand { display: inline-flex; align-items: center; gap: .65rem; font-weight: 750; text-decoration: none; }
+    .mark { width: .85rem; height: .85rem; background: #587b25; border-radius: 50%; box-shadow: inset 0 0 0 3px var(--lime); }
+    nav { display: flex; flex-wrap: wrap; gap: .15rem 1.35rem; font-size: .9rem; }
+    nav a { padding-block: .35rem; text-decoration: none; font-weight: 650; }
+    nav a:hover { text-decoration: underline; }
+    .hero { background: var(--green); color: var(--paper); }
+    .hero .wrap { padding-block: clamp(2.5rem, 7vw, 6.5rem); display: grid; grid-template-columns: 1.55fr minmax(235px, .7fr); align-items: end; gap: 2.6rem; }
+    .label { color: var(--muted); font-size: .78rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .hero .label { color: var(--lime); }
+    .hero h1 { margin-block: .85rem 1.45rem; max-width: 9ch; }
+    .hero .intro { max-width: 53ch; font-size: 1.12rem; color: #e4eddb; }
+    .hero aside { padding: 1.4rem 0 .25rem 1.5rem; border-left: 1px solid #668473; }
+    .hero aside p + p { margin-top: .55rem; }
+    .hero .jump { display: inline-block; margin-top: 1.2rem; background: var(--lime); color: var(--ink); padding: .53rem 1rem; font-weight: 750; text-decoration: none; }
+    .hero .jump:hover { background: #eefabf; }
+    .hero a:focus-visible { outline-color: #f5ffc8; }
+    main section { padding-block: clamp(2.55rem, 6vw, 5rem); border-bottom: 1px solid var(--line); scroll-margin: 1rem; }
+    .section-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 1.25rem 2.5rem; margin-bottom: 1.8rem; }
+    .section-heading > p { color: var(--muted); max-width: 52ch; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card { display: flex; flex-direction: column; align-items: start; border: 1px solid var(--line); border-top: 4px solid #658638; background: var(--panel); padding: 1.2rem; gap: .75rem; }
+    .card .source-link { margin-top: auto; padding-top: .4rem; font-weight: 750; }
+    .card .date { font-size: .86rem; color: var(--muted); }
+    .card .quote { border-left: 2px solid #9caf7d; padding-left: .65rem; color: var(--muted); font-size: .93rem; }
+    details { width: 100%; border-top: 1px solid var(--line); padding-top: .6rem; }
+    summary { cursor: pointer; font-weight: 750; }
+    details ul, .checks ol { padding-left: 1.3rem; margin: .6rem 0; }
+    details p + p { margin-top: .5rem; }
+    .comparison, .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .comparison article, .plans article { padding: clamp(1.2rem, 3vw, 1.7rem); border: 1px solid var(--line); background: var(--panel); }
+    .comparison .chosen { background: #ebf5d3; }
+    .comparison article h3, .plans article h3 { margin-block: .35rem .75rem; }
+    .comparison article p + p, .plans article p + p { margin-top: .7rem; }
+    .note { margin-top: 1rem; color: var(--muted); max-width: 80ch; }
+    .plans { margin-bottom: 1.5rem; }
+    .stories { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .stories li { display: grid; grid-template-columns: minmax(145px, .6fr) 1.4fr; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--line); }
+    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .checks h3 { margin-bottom: .55rem; }
+    .checks p + p { margin-top: .7rem; }
+    footer { color: var(--muted); font-size: .9rem; }
+    footer .wrap { align-items: baseline; }
+    footer p { max-width: 53ch; }
+    @media (max-width: 880px) {
+      .cards { grid-template-columns: 1fr; }
+      .hero .wrap { grid-template-columns: 1.4fr 1fr; }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: calc(100% - 2rem); }
+      .hero .wrap, .section-heading, .comparison, .plans, .checks, .stories li { grid-template-columns: 1fr; }
+      .hero .wrap { gap: 1.5rem; }
+      .hero aside { padding: 1rem 0 0; border-left: 0; border-top: 1px solid #668473; }
+      .stories li { gap: .25rem; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to research</a>
+  <header class="top">
+    <div class="wrap">
+      <a href="#top" class="brand"><span class="mark" aria-hidden="true"></span>IS218 Career Research</a>
+      <nav aria-label="Site sections">
+        <a href="#roles">Employer sources</a>
+        <a href="#comparison">Career paths</a>
+        <a href="#portfolio">Portfolio plan</a>
+        <a href="#next">Next check</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <header class="hero">
+      <div class="wrap">
+        <div>
+          <p class="label">Portfolio plan · November 2026</p>
+          <h1>From prototype to production</h1>
+          <p class="intro">What should an early portfolio demonstrate for customer-facing AI delivery, and how would that evidence differ for applied AI research?</p>
+          <a class="jump" href="#roles">Inspect employer evidence ↓</a>
+        </div>
+        <aside aria-label="Working direction">
+          <p class="label">Working direction</p>
+          <p>Prioritize a tested workflow with a clear user, a documented decision, and an explicit handoff when the system cannot answer.</p>
+        </aside>
+      </div>
+    </header>
+
+    <section id="roles" class="wrap" aria-labelledby="roles-title">
+      <div class="section-heading">
+        <h2 id="roles-title">Employer evidence</h2>
+        <p>Original employer descriptions checked <time datetime="2026-11-11">November 11, 2026</time>. Each card distinguishes the employer’s requirements from the portfolio evidence the role suggests.</p>
+      </div>
+      <div class="cards">
+        <article class="card" id="openai">
+          <p class="label">OpenAI · AI technology</p>
+          <h3>Forward Deployed Engineer (FDE) – NYC</h3>
+          <p class="date">New York City · Hybrid, three office days weekly · Posting date and deadline unstated.</p>
+          <p class="quote">“Embed closely with customer teams”</p>
+          <details open>
+            <summary>Responsibilities and eligibility</summary>
+            <ul>
+              <li>Discover customer needs and scope a technical solution.</li>
+              <li>Build full-stack systems and lead their production rollout.</li>
+              <li>Track adoption and share evaluation findings with product and research teams.</li>
+            </ul>
+            <p><strong>Candidate profile.</strong> 5+ years in engineering or technical deployment with customer-facing work, production frontend and backend code, and experience building or deploying generative AI. Up to 50% travel is required.</p>
+            <p><strong>Portfolio gap to address.</strong> Use GenConnect as a starting point. Document user discovery, one delivery tradeoff, and a handoff someone else can follow.</p>
+          </details>
+          <a class="source-link" href="https://openai.com/careers/forward-deployed-engineer-(fde)-nyc-new-york-city/">OpenAI job description ↗</a>
+        </article>
+        <article class="card" id="amazon">
+          <p class="label">Amazon · AI technology</p>
+          <h3>Applied Scientist, AGI</h3>
+          <p class="date">Sunnyvale, CA · Work format unstated · Posted <time datetime="2026-11-03">November 3, 2026</time> per the <a href="https://www.amazon.jobs/en-gb/business_categories/AGI">employer listing</a> · Deadline unstated.</p>
+          <p class="quote">“defining tasks and reward signals”</p>
+          <details open>
+            <summary>Responsibilities and eligibility</summary>
+            <ul>
+              <li>Design verifiable reinforcement-learning tasks and rewards.</li>
+              <li>Build infrastructure that can run those environments at scale.</li>
+              <li>Evaluate environment quality and whether training improves model capabilities.</li>
+            </ul>
+            <p><strong>Basic qualifications.</strong> 3+ years building models for business applications and either a PhD or a master’s with 4+ years of related experience. Also lists programming and a qualifying technical specialty.</p>
+            <p><strong>Portfolio gap to address.</strong> Extend the reproducibility practices in the maintenance analytics project to a model experiment with a baseline and failure analysis. The degree and experience requirements make this a future target.</p>
+          </details>
+          <a class="source-link" href="https://amazon.jobs/en/jobs/10595504/applied-scientist-agi">Amazon job description ↗</a>
+        </article>
+        <article class="card" id="mayo">
+          <p class="label">Mayo Clinic · Healthcare</p>
+          <h3>AI/ML Engineer - Revenue Cycle Automation-Remote</h3>
+          <p class="date">Rochester, MN · U.S. remote · Posted <time datetime="2026-04-29">April 29, 2026</time> · Deadline unstated.</p>
+          <p class="quote">“monitoring, bias and drift evaluation”</p>
+          <details open>
+            <summary>Responsibilities and eligibility</summary>
+            <ul>
+              <li>Design predictive and AI-assisted administrative workflows with human review.</li>
+              <li>Build Python models and integrate them into production systems.</li>
+              <li>Set guardrails and monitor production behavior, bias, and drift.</li>
+            </ul>
+            <p><strong>Qualifications.</strong> Relevant master’s plus one year or bachelor’s plus three years of experience, with production AI/ML or related work and cloud and software skills. The employer states no visa sponsorship or transfer.</p>
+            <p><strong>Portfolio gap to address.</strong> Build on the calculator’s documented error handling. Show when a workflow sends a case to a person and how failures would be monitored.</p>
+          </details>
+          <a class="source-link" href="https://jobs.mayoclinic.org/job/rochester/ai-ml-engineer-revenue-cycle-automation-remote/33647/94534534048">Mayo Clinic job description ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="comparison" class="wrap" aria-labelledby="comparison-title">
+      <div class="section-heading">
+        <h2 id="comparison-title">Two career directions</h2>
+        <p>These postings illustrate how teams define success. The portfolio plan uses that distinction to choose which skills to demonstrate first.</p>
+      </div>
+      <div class="comparison">
+        <article class="chosen">
+          <p class="label">First direction</p>
+          <h3>Customer-facing AI delivery</h3>
+          <p><a href="#openai">OpenAI</a> emphasizes adoption and workflow impact. <a href="#mayo">Mayo Clinic</a> adds an industry example where human review and monitoring matter.</p>
+          <p><strong>Show:</strong> a usable workflow, a tradeoff explained in writing, a simple baseline, and a handoff. This extends existing web and analytics work with user validation and operational checks.</p>
+        </article>
+        <article>
+          <p class="label">Alternative</p>
+          <h3>Model-focused applied science</h3>
+          <p><a href="#amazon">Amazon</a> emphasizes verifiable training tasks and evidence that training improves model capabilities.</p>
+          <p><strong>Show:</strong> a reproducible experiment, a baseline, and an analysis of failures. This provides deeper experimental evidence and calls for more model-training practice.</p>
+        </article>
+      </div>
+      <p class="note"><strong>Assumptions.</strong> The three postings are examples of experienced roles. The short-term goal is to demonstrate transferable skills through a small project. Current application acceptance was unconfirmed. Scoping, coding, and rollout are established software work. In these AI examples, evaluation also checks model behavior on the task and when human review is needed.</p>
+    </section>
+
+    <section id="portfolio" class="wrap" aria-labelledby="portfolio-title">
+      <div class="section-heading">
+        <h2 id="portfolio-title">Portfolio plan</h2>
+        <p>For a technical hiring manager, this portfolio makes it easy to see the problem, my contribution, and the evidence, then open the strongest case study.</p>
+      </div>
+      <p class="note" style="margin: 0 0 1rem">A recruiter is the alternate reader and would benefit from a shorter skills summary. The hiring manager takes priority because this plan tests whether a reader can trace the work to a source or check.</p>
+      <div class="plans">
+        <article>
+          <p class="label">Selected concept</p>
+          <h3>Evidence-first portfolio</h3>
+          <p><strong>Voice:</strong> precise, practical, candid. <strong>Archetype:</strong> the guide. Use clear headings and a repeated problem → decision → check structure.</p>
+          <p>Adapt the constrained reading width and responsive grid from the <a href="https://design-system.service.gov.uk/styles/layout/">GOV.UK layout guide</a>. The repeated structure makes comparison easier and gives each story a similar visual weight.</p>
+        </article>
+        <article>
+          <p class="label">Alternate concept</p>
+          <h3>Annotated field notebook</h3>
+          <p><strong>Voice:</strong> curious, direct, reflective. <strong>Archetype:</strong> the explorer. Open on a project decision and place dated evidence alongside the story.</p>
+          <p>Adapt the dated observations from the <a href="https://naturalhistory.si.edu/education/teaching-resources/life-science/field-book-activity-making-and-recording-observations">Smithsonian field book</a>. The format gives more space to process and requires more reading. Both concepts use the same introduction, cases, and “Inspect evidence” action.</p>
+        </article>
+      </div>
+      <ul class="stories" aria-label="Planned portfolio case studies">
+        <li><strong><a href="https://congress-compass.vercel.app/">GenConnect ↗</a></strong><span>Help a student locate a representative and reach an official resource. Show one search and how the result was checked against an official source.</span></li>
+        <li><strong><a href="https://github.com/oa356/residence-hall-operations-analysis">Maintenance analytics ↗</a></strong><span>Turn synthetic maintenance requests into a usable operations summary. Trace one KPI through the SQL and Python workflow and label the data as synthetic.</span></li>
+        <li><strong><a href="https://github.com/oa356/is218-calculator-patterns/blob/main/STUDENT_README.md">Python calculator ↗</a></strong><span>Show how a command-line tool handles errors. Distinguish starter code from changes, then document expected and observed behavior for division by zero.</span></li>
+      </ul>
+      <p class="note">Use direct links to artifacts and concrete checks to establish credibility. State the limits beside each claim, including synthetic data, starter code, and any test that remains pending.</p>
+    </section>
+
+    <section id="next" class="wrap" aria-labelledby="next-title">
+      <div class="section-heading">
+        <h2 id="next-title">What to test next</h2>
+        <p>Build one small source-grounded workflow for a public-information task. Compare its decisions with a manual lookup baseline using synthetic inputs.</p>
+      </div>
+      <div class="checks">
+        <article>
+          <h3>Prototype acceptance check</h3>
+          <p>Prepare 10 cases before implementation. Expect seven supported answers to cite an official source and three unsupported inputs to route to human review. Record expected and observed results for every case.</p>
+          <p><strong>Status.</strong> Planned. The prototype check is pending.</p>
+        </article>
+        <article>
+          <h3>Source and peer verification</h3>
+          <p>AI helped find candidate sources, draft paraphrases, and structure the site. Responsibilities, qualifications, and dates were checked against the employer descriptions. The career direction and project choices are planning judgments.</p>
+          <p><strong>Partner task.</strong> Trace <a href="#mayo">Mayo Clinic’s role</a> to the proposed human-review check. Record the first point where the evidence or expected behavior becomes unclear, with the page and a suggested change.</p>
+          <p><a href="https://github.com/oa356/is218-class/tree/main/career-research">Project record and source</a> · <a href="https://github.com/oa356/is218-class/blob/main/career-research/docs/checks.md">Verification log</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p>IS218-003 · Portfolio Plan · <a href="https://is218-directory-search-exploration.akindemuyi18.chatgpt.site">Creative Project Plan research ↗</a></p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
