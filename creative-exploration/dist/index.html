@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A programming research plan comparing literal and fuzzy name search for a student directory.">
+  <title>Finding a name · Programming exploration</title>
+  <style>
+    :root { color-scheme: light; font-family: "Instrument Sans", "Segoe UI", sans-serif; color: #17252d; background: #f4f5ee; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #164d3c; text-underline-offset: .25em; }
+    a:focus-visible, input:focus-visible, button:focus-visible { outline: 3px solid #bd5116; outline-offset: 4px; }
+    .skip { position: absolute; top: 1rem; left: 1rem; padding: .75rem; background: #fff; transform: translateY(-150%); }
+    .skip:focus { transform: translateY(0); }
+    .wrap { width: min(100% - 2.25rem, 68rem); margin-inline: auto; }
+    header { background: #142d2b; color: #f5f8ef; }
+    .bar, nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+    .bar { justify-content: space-between; padding-block: 1.2rem; border-bottom: 1px solid #6d8981; }
+    header a { color: #e4f9d0; }
+    .course { font: 600 .8rem "IBM Plex Mono", Consolas, monospace; letter-spacing: .06em; }
+    .hero { padding-block: clamp(2.5rem, 7vw, 6rem); }
+    .hero p { max-width: 45rem; font-size: clamp(1.1rem, 2.5vw, 1.5rem); }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(3.2rem, 10vw, 7.25rem); line-height: .94; letter-spacing: -.065em; margin-bottom: 1.35rem; }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.45rem); line-height: 1.05; letter-spacing: -.045em; }
+    h3 { font-size: 1.15rem; }
+    main { padding-block: 1rem 4rem; }
+    section { display: grid; grid-template-columns: minmax(10rem, .42fr) minmax(0, 1fr); gap: 1.25rem 2.5rem; padding-block: clamp(1.8rem, 4.5vw, 3.25rem); border-bottom: 1px solid #a8b4a9; }
+    .copy, .options { display: grid; gap: .9rem; }
+    .options { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+    .panel { background: #fff; border: 1px solid #b4beb2; padding: 1.1rem; }
+    .panel p { margin-top: .65rem; }
+    .chosen { background: #e5efd8; border-color: #8ea389; }
+    p, li, td, th { line-height: 1.55; }
+    ul { margin-block: 0; padding-left: 1.25rem; }
+    li + li { margin-top: .55rem; }
+    table { border-collapse: collapse; width: 100%; font-size: .91rem; text-align: left; }
+    caption { text-align: left; font-weight: 700; margin-bottom: .5rem; }
+    th, td { padding: .6rem .45rem; border-bottom: 1px solid #bac4b8; vertical-align: top; overflow-wrap: anywhere; }
+    th { background: #e5efd8; }
+    form { display: grid; gap: .65rem; }
+    .entry { display: flex; flex-wrap: wrap; gap: .5rem; }
+    input, button { font: inherit; min-height: 2.7rem; padding: .45rem .7rem; border: 1px solid #546b60; border-radius: .25rem; }
+    input { flex: 1 1 12rem; min-width: 0; color: inherit; background: #fff; }
+    button { background: #1c4b3e; color: #fff; cursor: pointer; }
+    footer { padding-block: 0 2.5rem; }
+    @media (max-width: 42rem) { section, .options { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to research</a>
+  <header>
+    <div class="wrap bar">
+      <span class="course">IS218 · Creative Project Plan</span>
+      <nav aria-label="Research sections">
+        <a href="#approaches">Approaches</a>
+        <a href="#checks">Checks</a>
+        <a href="#next">Next experiment</a>
+      </nav>
+    </div>
+    <div class="wrap hero">
+      <h1>Finding a name</h1>
+      <p>Can typo-tolerant search help students find a directory entry they can’t quite spell, while keeping correctly spelled searches predictable?</p>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <section id="scope" aria-labelledby="scope-heading">
+      <h2 id="scope-heading">Audience and scope</h2>
+      <div class="copy">
+        <p>The intended reader is a student testing a small directory lookup. The first slice searches a fixed set of fictional names in the browser. It can inform a later app where a student signs in, saves a result, returns to a private dashboard, and manages their account.</p>
+        <p><strong>Assumptions to test.</strong> The directory is small enough for in-browser filtering. Students sometimes remember only part of a name or transpose letters. A plausible wrong match could send someone to the wrong record.</p>
+      </div>
+    </section>
+    <section id="approaches" aria-labelledby="approaches-heading">
+      <h2 id="approaches-heading">Two approaches</h2>
+      <div class="copy">
+        <div class="options">
+          <article class="panel chosen">
+            <h3>Normalized substring</h3>
+            <p>Trim spaces, use lowercase and Unicode NFC, then look for the same character sequence inside each name. This is the baseline. Its behavior is easy to explain and reproduce, but it misses spelling errors.</p>
+          </article>
+          <article class="panel">
+            <h3>Fuse.js fuzzy ranking</h3>
+            <p>Score approximate matches and return the best candidates. It could recover misspellings. The ranking and score threshold need testing against similar names and queries with no intended match.</p>
+          </article>
+        </div>
+        <p><strong>Decision.</strong> Keep literal matching as the first pass. Test fuzzy results only as a fallback when the baseline has no match, and label them as possible matches if the evaluation supports adopting it.</p>
+      </div>
+    </section>
+    <section id="checks" aria-labelledby="checks-heading">
+      <h2 id="checks-heading">Baseline checks</h2>
+      <div class="copy">
+        <p>Five fixed assertions ran locally on November 11, 2026. Each observed result agreed with the baseline expectation. The missed typo is an observed limitation that motivates the next experiment.</p>
+        <table>
+          <caption>Four fictional names, five queries</caption>
+          <thead><tr><th scope="col">Query</th><th scope="col">Expected</th><th scope="col">Observed</th></tr></thead>
+          <tbody>
+            <tr><td>Uppercase <code>BEN PARK</code> with spaces</td><td>Ben Park</td><td>Ben Park</td></tr>
+            <tr><td><code>Chen</code></td><td>Avery Chen</td><td>Avery Chen</td></tr>
+            <tr><td><code>Ame&#x301;lie</code>, decomposed accent</td><td>Amélie Laurent</td><td>Amélie Laurent</td></tr>
+            <tr><td><code>Jodran</code>, transposed letters</td><td>No match</td><td>No match</td></tr>
+            <tr><td><code>ZZZ</code>, unrelated string</td><td>No match</td><td>No match</td></tr>
+          </tbody>
+        </table>
+        <form id="lookup" class="panel">
+          <label for="name"><strong>Try the literal baseline</strong></label>
+          <div class="entry"><input id="name" type="search" placeholder="Try Chen or Jodran" autocomplete="off" maxlength="100"><button type="submit">Search</button></div>
+          <p id="result" role="status">Results appear here.</p>
+        </form>
+      </div>
+    </section>
+    <section id="next" aria-labelledby="next-heading">
+      <h2 id="next-heading">Next experiment</h2>
+      <div class="copy">
+        <p>Run both approaches on the same 12 labeled queries. Include four exact or partial names, five typos, and three queries with no intended match. Include two deliberately similar names. Keep the same fixture and record the returned names and order.</p>
+        <p><strong>Proposed acceptance check.</strong> Add fuzzy suggestions only if at least four of five typos put the intended name in the top three, all four existing matches stay first, and no more than one of the three unrelated queries returns suggestions. The fuzzy comparison is pending.</p>
+        <p><strong>Partner task.</strong> Try <code>Chen</code> and <code>Jodran</code>, then explain what would justify changing the behavior.</p>
+      </div>
+    </section>
+    <section id="sources" aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Sources and AI use</h2>
+      <div class="copy">
+        <p>Technical references reviewed November 11, 2026.</p>
+        <ul>
+          <li>The ECMAScript specification defines literal substring inclusion and Unicode normalization. These establish the baseline’s string operations. <a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.includes">Substring inclusion</a> · <a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.normalize">Unicode normalization</a></li>
+          <li>Fuse.js documents approximate matches, ranked results and searchable fields. Its examples establish the option’s behavior on the documentation examples. <a href="https://www.fusejs.io/">Fuse.js documentation</a></li>
+        </ul>
+        <p>AI helped draft the comparison and fixture. The library and language claims were checked against their original documentation. The five baseline cases were executed separately. Ranking quality with this fixture and usefulness with students still need testing.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <nav aria-label="Project links">
+      <a href="https://github.com/oa356/is218-class/tree/main/creative-exploration">GitHub source</a>
+      <a href="https://is218-ai-career-research.akindemuyi18.chatgpt.site">Related research · Career Research for Portfolio Plan</a>
+    </nav>
+  </footer>
+  <script id="baseline">
+    const names = ["Avery Chen", "Ben Park", "Amélie Laurent", "Jordan Rivera"];
+    const normalize = value => value.trim().normalize("NFC").toLowerCase();
+    function findNames(input) {
+      const query = normalize(input);
+      if (!query) return [];
+      return names.filter(name => normalize(name).includes(query));
+    }
+  </script>
+  <script>
+    document.querySelector("#lookup").addEventListener("submit", event => {
+      event.preventDefault();
+      const input = document.querySelector("#name").value;
+      const result = document.querySelector("#result");
+      if (!normalize(input)) {
+        result.textContent = "Enter a name or part of a name.";
+        return;
+      }
+      const matches = findNames(input);
+      result.textContent = matches.length ? matches.join(", ") : "No match found.";
+    });
+  </script>
+</body>
+</html>
