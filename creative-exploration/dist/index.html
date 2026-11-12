@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A programming research plan comparing literal and fuzzy name search for a student directory.">
-  <title>Finding a name · Programming exploration</title>
+  <meta name="description" content="An IS218 Creative Project plan for a campus resource finder, with a tested search baseline and a proposed typo-tolerance experiment.">
+  <title>Finding a name · IS218 Creative Project Plan</title>
   <style>
     :root { color-scheme: light; font-family: "Instrument Sans", "Segoe UI", sans-serif; color: #17252d; background: #f4f5ee; }
     * { box-sizing: border-box; }
@@ -32,6 +32,15 @@
     .panel { background: #fff; border: 1px solid #b4beb2; padding: 1.1rem; }
     .panel p { margin-top: .65rem; }
     .chosen { background: #e5efd8; border-color: #8ea389; }
+    .screen { display: block; margin-top: .7rem; border: 1px solid #b4beb2; background: #fff; padding: .55rem .7rem; font-family: inherit; line-height: 1.4; }
+    .stories, .flow { margin: 0; padding: 0; list-style: none; }
+    .stories li { padding: .7rem 0; border-bottom: 1px solid #bac4b8; }
+    .stories li:first-child { border-top: 1px solid #bac4b8; }
+    .stories li + li { margin-top: 0; }
+    .stories strong, .flow strong { display: block; }
+    .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .flow li { position: relative; margin: 0; padding: .8rem; }
+    .flow li + li::before { content: "→"; position: absolute; left: -1.03rem; top: .85rem; color: #164d3c; font-weight: 700; }
     p, li, td, th { line-height: 1.55; }
     ul { margin-block: 0; padding-left: 1.25rem; }
     li + li { margin-top: .55rem; }
@@ -45,7 +54,10 @@
     input { flex: 1 1 12rem; min-width: 0; color: inherit; background: #fff; }
     button { background: #1c4b3e; color: #fff; cursor: pointer; }
     footer { padding-block: 0 2.5rem; }
-    @media (max-width: 42rem) { section, .options { grid-template-columns: 1fr; } }
+    @media (max-width: 42rem) {
+      section, .options, .flow { grid-template-columns: 1fr; }
+      .flow li + li::before { content: "↓"; top: -1.23rem; left: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -54,26 +66,75 @@
     <div class="wrap bar">
       <span class="course">IS218 · Creative Project Plan</span>
       <nav aria-label="Research sections">
-        <a href="#approaches">Approaches</a>
-        <a href="#checks">Checks</a>
-        <a href="#next">Next experiment</a>
+        <a href="#concepts">Concepts</a>
+        <a href="#journey">Stories</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#checks">Try the baseline</a>
+        <a href="#next">Experiment</a>
+        <a href="#sources">Sources</a>
       </nav>
     </div>
     <div class="wrap hero">
       <h1>Finding a name</h1>
-      <p>Can typo-tolerant search help students find a directory entry they can’t quite spell, while keeping correctly spelled searches predictable?</p>
+      <p>Can typo-tolerant search help first-year commuters find a campus service they can’t quite spell, while keeping familiar searches predictable?</p>
     </div>
   </header>
   <main id="main" class="wrap">
     <section id="scope" aria-labelledby="scope-heading">
       <h2 id="scope-heading">Audience and scope</h2>
       <div class="copy">
-        <p>The intended reader is a student testing a small directory lookup. The first slice searches a fixed set of fictional names in the browser. It can inform a later app where a student signs in, saves a result, returns to a private dashboard, and manages their account.</p>
-        <p><strong>Assumptions to test.</strong> The directory is small enough for in-browser filtering. Students sometimes remember only part of a name or transpose letters. A plausible wrong match could send someone to the wrong record.</p>
+        <p><strong>Audience.</strong> First-year commuter students who need to find a campus office or service between classes.</p>
+        <p><strong>Dream.</strong> Make a campus directory that helps a new commuter find the right office from a half-remembered name and keep a short list for later.</p>
+        <p><strong>Working promise.</strong> Create an account and sign in, find a service by name or category, bookmark it, reopen it from a private dashboard, and update a display name or password before signing out.</p>
+        <p><strong>Assumptions to test.</strong> A small curated catalog can run in the browser. Students often remember part of a name. A plausible wrong match could send someone to the wrong service. The current prototype uses fictional names to isolate search behavior.</p>
+      </div>
+    </section>
+    <section id="concepts" aria-labelledby="concepts-heading">
+      <h2 id="concepts-heading">Two project concepts</h2>
+      <div class="copy">
+        <div class="options">
+          <article class="panel chosen">
+            <h3>Campus resource finder</h3>
+            <p>Search a small catalog of campus services and save one bookmark per resource. The private dashboard shows a count and recent bookmarks.</p>
+            <span class="screen"><strong>First screen</strong> · Find a campus service → Search → Matching services</span>
+          </article>
+          <article class="panel">
+            <h3>Between-class study planner</h3>
+            <p>Choose a subject and a 15-, 25-, or 45-minute study block. Save the plan and see recent plans and total planned minutes in a private dashboard.</p>
+            <span class="screen"><strong>First screen</strong> · Choose a subject → Pick a duration → Save plan</span>
+          </article>
+        </div>
+        <p><strong>Choice.</strong> Build the resource finder. Its search and bookmark flow builds on the existing lookup prototype. The planner would have simpler matching rules but would test time planning instead of search quality.</p>
+        <p><strong>Presentation choice.</strong> Lead with search for commuters who have a service in mind. A browse-first layout organized by category would suit orientation students discovering what exists. Keep category labels in the search results and ask a partner whether the search entry point is clear.</p>
+      </div>
+    </section>
+    <section id="journey" aria-labelledby="journey-heading">
+      <h2 id="journey-heading">Five stories</h2>
+      <div class="copy">
+        <p>These are the expected checks for the planned application.</p>
+        <ol class="stories">
+          <li><strong>1. Join and return</strong> I can register and sign in. A duplicate username and incorrect password each produce an error.</li>
+          <li><strong>2. Find and bookmark a service</strong> I can search by name or category and save a valid result. Empty searches prompt for a term, unknown resource IDs are rejected, and saving twice leaves one bookmark.</li>
+          <li><strong>3. Reopen my saved resources</strong> I see an empty state on a new account, then my bookmark count and recent links. Data survives a new session and a restart. A second account cannot read or change my bookmarks.</li>
+          <li><strong>4. Maintain my account</strong> I can edit my display name and change my password after entering the current one. The old password fails, other sessions lose access, and the current session continues.</li>
+          <li><strong>5. Leave safely</strong> I can sign out. A later request to the dashboard or bookmark action requires sign-in.</li>
+        </ol>
+      </div>
+    </section>
+    <section id="architecture" aria-labelledby="architecture-heading">
+      <h2 id="architecture-heading">Architecture sketch</h2>
+      <div class="copy">
+        <p><strong>Planned stack.</strong> Python with Django 5.2, Django templates and forms, a small JavaScript search module, and SQLite. Django supplies authentication and session handling. SQLite fits a local build with a small catalog and a few test accounts.</p>
+        <ol class="flow" aria-label="Data flow from browser to server to database">
+          <li class="panel"><strong>Browser</strong> Render the public catalog and search it locally. Submit the selected resource ID to bookmark it.</li>
+          <li class="panel"><strong>Django server</strong> Require a session and a CSRF token for saving. Look up the resource ID and take ownership from the signed-in account. Filter dashboard queries to that owner.</li>
+          <li class="panel"><strong>SQLite database</strong> Store users, resources and bookmarks. A unique owner and resource pair keeps repeated saves from adding duplicates.</li>
+        </ol>
+        <p>The server renders the count and recent bookmarks from persisted rows. Account edits apply to the signed-in user. Use Django’s password change form and verify session behavior with two browser sessions.</p>
       </div>
     </section>
     <section id="approaches" aria-labelledby="approaches-heading">
-      <h2 id="approaches-heading">Two approaches</h2>
+      <h2 id="approaches-heading">Two search approaches</h2>
       <div class="copy">
         <div class="options">
           <article class="panel chosen">
@@ -82,16 +143,16 @@
           </article>
           <article class="panel">
             <h3>Fuse.js fuzzy ranking</h3>
-            <p>Score approximate matches and return the best candidates. It could recover misspellings. The ranking and score threshold need testing against similar names and queries with no intended match.</p>
+            <p>Score approximate matches and rank candidates. The documentation shows that fuzzy matching is available. How well it handles similar names and unrelated inputs here is an open question.</p>
           </article>
         </div>
-        <p><strong>Decision.</strong> Keep literal matching as the first pass. Test fuzzy results only as a fallback when the baseline has no match, and label them as possible matches if the evaluation supports adopting it.</p>
+        <p><strong>Decision.</strong> Keep literal matching as the first pass. If the experiment supports it, offer fuzzy candidates as possible matches only after an empty result. The student chooses the service to save.</p>
       </div>
     </section>
     <section id="checks" aria-labelledby="checks-heading">
       <h2 id="checks-heading">Baseline checks</h2>
       <div class="copy">
-        <p>Five fixed assertions ran locally on November 11, 2026. Each observed result agreed with the baseline expectation. The missed typo is an observed limitation that motivates the next experiment.</p>
+        <p><strong>Observed.</strong> Five fixed assertions passed locally on November 11, 2026. The baseline missed the transposed name as expected. That result motivates the experiment.</p>
         <table>
           <caption>Four fictional names, five queries</caption>
           <thead><tr><th scope="col">Query</th><th scope="col">Expected</th><th scope="col">Observed</th></tr></thead>
@@ -108,32 +169,35 @@
           <div class="entry"><input id="name" type="search" placeholder="Try Chen or Jodran" autocomplete="off" maxlength="100"><button type="submit">Search</button></div>
           <p id="result" role="status">Results appear here.</p>
         </form>
+        <p><strong>Planned.</strong> Use synthetic accounts to test sign-in, duplicate saves, restart persistence, two-user ownership, password changes and logout. See the <a href="https://github.com/oa356/is218-class/blob/main/creative-exploration/README.md#verification">verification log</a> for what has run.</p>
       </div>
     </section>
     <section id="next" aria-labelledby="next-heading">
       <h2 id="next-heading">Next experiment</h2>
       <div class="copy">
-        <p>Run both approaches on the same 12 labeled queries. Include four exact or partial names, five typos, and three queries with no intended match. Include two deliberately similar names. Keep the same fixture and record the returned names and order.</p>
-        <p><strong>Proposed acceptance check.</strong> Add fuzzy suggestions only if at least four of five typos put the intended name in the top three, all four existing matches stay first, and no more than one of the three unrelated queries returns suggestions. The fuzzy comparison is pending.</p>
-        <p><strong>Partner task.</strong> Try <code>Chen</code> and <code>Jodran</code>, then explain what would justify changing the behavior.</p>
+        <p><strong>Planned experiment.</strong> Can a labeled “Possible matches” list recover mistyped queries without directing students to the wrong service? Run both approaches on 12 labeled queries with four exact or partial inputs, five typos and three unrelated queries. Include two similar catalog entries. Record the order of returned IDs against the expected IDs written before testing.</p>
+        <p><strong>Pass and stop rule.</strong> Add the fallback only if at least four of five typos place the intended entry in the top three, all four literal results keep their order, and no more than one unrelated query returns suggestions. If a 45-minute trial misses those thresholds or the ranking is unclear, keep literal search with a prompt to try a shorter term. The fuzzy comparison is pending.</p>
+        <p><strong>Pattern trial.</strong> Compare one search function with a conditional against two small search functions with a shared result format. Run the same query checks and see whether the second design lets the fallback change independently without making the result harder to trace.</p>
+        <p><strong>Partner task.</strong> Open the Fuse.js source, explain the fallback choice, try <code>Chen</code> and <code>Jodran</code>, and identify one assumption or confusing step. The walkthrough is pending. <a href="https://github.com/oa356/is218-class/issues/2">Peer review issue</a></p>
       </div>
     </section>
     <section id="sources" aria-labelledby="sources-heading">
       <h2 id="sources-heading">Sources and AI use</h2>
       <div class="copy">
-        <p>Technical references reviewed November 11, 2026.</p>
         <ul>
-          <li>The ECMAScript specification defines literal substring inclusion and Unicode normalization. These establish the baseline’s string operations. <a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.includes">Substring inclusion</a> · <a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.normalize">Unicode normalization</a></li>
-          <li>Fuse.js documents approximate matches, ranked results and searchable fields. Its examples establish the option’s behavior on the documentation examples. <a href="https://www.fusejs.io/">Fuse.js documentation</a></li>
+          <li><strong>ECMAScript · checked November 12, 2026.</strong> Substring inclusion checks for a literal sequence. NFC normalizes equivalent Unicode representations, which explains the decomposed-accent test. <a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.includes">Substring inclusion</a> · <a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.normalize">Unicode normalization</a></li>
+          <li><strong>Fuse.js · checked November 12, 2026.</strong> The project documents approximate matching and a result score. That supports testing a suggestions list. <a href="https://www.fusejs.io/">Fuse.js documentation</a></li>
+          <li><strong>Django · checked November 12, 2026.</strong> The auth docs describe password hashing and how password changes affect sessions. The CSRF guide shows how to protect internal POST forms. Both inform the account and bookmark checks. <a href="https://docs.djangoproject.com/en/5.2/topics/auth/default/#session-invalidation-on-password-change">Django authentication</a> · <a href="https://docs.djangoproject.com/en/5.2/howto/csrf/">Django CSRF guidance</a></li>
+          <li><strong>SQLite · checked November 12, 2026.</strong> SQLite documents a local storage model and a tradeoff for concurrent writers. A single local app is the planned scope. <a href="https://www.sqlite.org/whentouse.html">SQLite use cases</a></li>
         </ul>
-        <p>AI helped draft the comparison and fixture. The library and language claims were checked against their original documentation. The five baseline cases were executed separately. Ranking quality with this fixture and usefulness with students still need testing.</p>
+        <p>AI helped draft the alternatives, fixture and test plan. The baseline was executed against expected results and technical claims were checked against the original docs. Search quality on service names and the planned account journey still need testing.</p>
       </div>
     </section>
   </main>
   <footer class="wrap">
     <nav aria-label="Project links">
-      <a href="https://github.com/oa356/is218-class/tree/main/creative-exploration">GitHub source</a>
-      <a href="https://is218-ai-career-research.akindemuyi18.chatgpt.site">Related research · Career Research for Portfolio Plan</a>
+      <a href="https://github.com/oa356/is218-class/tree/main/creative-exploration">GitHub source and project record</a>
+      <a href="https://is218-ai-career-research.akindemuyi18.chatgpt.site">Portfolio Plan career research</a>
     </nav>
   </footer>
   <script id="baseline">
