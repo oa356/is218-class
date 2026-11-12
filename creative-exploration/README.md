@@ -56,6 +56,7 @@ AI helped draft the alternatives, fixture and planned checks. The source claims 
 | --- | --- |
 | Observed · November 11 | Five local baseline cases matched expectations. Uppercase with spaces found Ben Park, `Chen` found Avery Chen, the decomposed accent found Amélie Laurent, and `Jodran` and `ZZZ` returned no match. The published demo also returned Avery Chen for `Chen`. [Baseline evidence](https://is218-directory-search-exploration.akindemuyi18.chatgpt.site/#checks) |
 | Observed · November 12 | Reran the five baseline form checks and confirmed a blank query prompts for a name. All six passed. All seven local navigation links resolved, and the plan contains five stories. |
+| Observed on the live site · November 12 | The browser returned Avery Chen for `Chen`, showed no match for `Jodran`, and prompted for a name on blank input. Followed the links between the Creative Project and Portfolio sites in both directions. [Live baseline](https://is218-directory-search-exploration.akindemuyi18.chatgpt.site/#checks) |
 | Planned | Compare fuzzy suggestions and the two search structures on the 12 labeled queries. |
 | Planned | Implement and test the account journey, server validation, duplicate saves, ownership, restart persistence and session behavior. |
 | Pending | Partner opens the Fuse.js source, tries the two baseline queries, explains the fallback choice and identifies an assumption. Record the observation, the owner decision and any linked change, then ask the partner to retry. [Open peer review issue](https://github.com/oa356/is218-class/issues/2) |
