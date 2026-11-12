@@ -2,7 +2,7 @@
 
 [Customer notes](customer-kit/CUSTOMER-NOTES.md) · [Prepared scenario](https://github.com/kaw393939/is218-studio/blob/main/docs/public/kits/fde-customer/scenarios/repair-shop.md) · [Course group brief](https://github.com/kaw393939/is218-studio/blob/main/docs/projects/group.md)
 
-**Review 1 status** · Proposed scope. Confirm the customer, stories and work owners with the team. Implementation and real peer review are pending.
+**Review 1 status** · Proposed scope for @oa356 and Ashley. Confirm the customer, stories and owners together. Implementation and real peer review are pending.
 
 ## Customer and scope
 
@@ -47,18 +47,18 @@ For the first slice, compare an inline conditional with a status-to-allowed-next
 
 ## Work and cross-review
 
-These two slices are proposed for a pair. Assign them by name together. If there is a third member, split detail/receipt and restart verification into a third slice and rebalance the work.
+Both slices include design, implementation, checks and review of the other slice. The names below are proposed until both members confirm.
 
 | Proposed owner | Design and development | QA and cross-review |
 | --- | --- | --- |
-| Intake owner · name pending | Sketch the intake and receipt, implement input validation and record creation, and render errors and the pending reference. | Test valid and rejected intake. Review the other owner's queue and try an illegal transition. |
-| Queue owner · name pending | Sketch queue and status controls, implement saved reads and status changes, and handle terminal states. | Test valid and rejected transitions and restart persistence. Review the other owner's intake with valid, blank and unsupported inputs. |
+| @oa356 · intake | Sketch the intake and receipt, implement input validation and record creation, and render errors and the pending reference. | Test valid and rejected intake. Review the other owner's queue and try an illegal transition. |
+| Ashley · queue | Sketch queue and status controls, implement saved reads and status changes, and handle terminal states. | Test valid and rejected transitions and restart persistence. Review the other owner's intake with valid, blank and unsupported inputs. |
 | Both | Agree on the field contract, state labels and database interface. Record decisions in this spec. | Trace a saved request across the two slices and run one classmate walkthrough. |
 
 ## Checks and review
 
 - **Checked for Plan** · Compared both prepared scopes, all four stories, the field constraints, and the allowed transitions against the official scenario. [Scenario source](https://github.com/kaw393939/is218-studio/blob/main/docs/public/kits/fde-customer/scenarios/repair-shop.md)
 - **Planned implementation checks** · Valid intake and exact receipt values, no write on invalid intake, allowed and rejected transitions, queue/detail agreement, and persistence after restart. Record actual commands and results here when run.
-- **Pending team and peer checks** · Confirm names and owners. Ask a classmate to use the proposed Tuesday walk-in and explain what the Pending review receipt promises, then trace where the coordinator would find it. Record the first confusing step, the team's decision, a linked change and the classmate's retry. 
+- **Pending team and peer checks** · Confirm the proposed customer, stories and work split with Ashley. Ask a classmate to use the proposed Tuesday walk-in and explain what the Pending review receipt promises, then trace where the coordinator would find it. Record the first confusing step, the team's decision, a linked change and the classmate's retry. [Open walkthrough issue](https://github.com/oa356/is218-class/issues/3)
 
-**Initial contribution** · The proposed scope comparison, workflow rules and acceptance checks were drafted with AI assistance. Record the team's decisions and each member's actual contribution as work proceeds.
+**Initial contribution** · @oa356 brought the draft scope comparison, workflow rules and acceptance checks with AI assistance. The work split above is proposed. Record actual contributions as each slice is designed, built and checked.
