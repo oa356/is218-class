@@ -2,6 +2,20 @@
 
 [Published programming research](https://is218-directory-search-exploration.akindemuyi18.chatgpt.site) · [Site source](dist/index.html) · [Repository](https://github.com/oa356/is218-class) · [Portfolio Plan site](https://is218-ai-career-research.akindemuyi18.chatgpt.site) · [Portfolio record](../career-research/README.md)
 
+## Review 2 · First working slice
+
+[Runnable Django app](app/) · [Rule and account checks](app/finder/tests.py) · [Research site](https://is218-directory-search-exploration.akindemuyi18.chatgpt.site/#review-2) · [Peer issue #2](https://github.com/oa356/is218-class/issues/2)
+
+A commuter can create an account, sign in, search the five fictional services, bookmark a result, sign out and find it on returning. The dashboard shows the signed-in user's count and recent saves. Display-name and password changes work. Django reads the owner from the session. SQLite enforces one bookmark per owner and service.
+
+**Search decision.** The original plan proposed JavaScript and Fuse.js. This local slice uses Python's standard-library similarity score so search, rendered results and tests share one implementation. Literal name/category hits take priority. A typo fallback scores the full name and its individual words, requires 0.76 similarity and shows up to three suggestions. Two function-based Strategy implementations share an ordered list of services. The conditional alternative in the test calls the same functions explicitly. Both gave identical output on all 12 cases. Keeping an ordered pair of named strategies makes the fallback independently replaceable, at the cost of an extra loop.
+
+**Observed November 18, 2026.** Six Django tests passed on Python 3.12 and Django 5.2.19. Four literal queries preserved their expected results and order, five typos returned the intended service in the top three, and three unrelated queries produced zero suggestions. The sample contains five services. The tests also covered invalid credentials, duplicate registration and saves, unknown IDs, CSRF, two-user isolation, revoked sessions, and display-name/password changes. A separate CSRF-enforced Django client registered, signed in, searched for `trasnit`, saved Transit Desk and signed out. A fresh Python process with a new session read the same bookmark from disk.
+
+**AI contribution and limits.** Codex implemented the Review 1 resource-finder choice, proposed the Python fallback and ran the checks. The anticipated benefit was typo recovery without changing literal search order. The fixture met that expectation. Next, try ambiguous queries from a commuter before changing the threshold. Chromium could not start locally, so the visual walkthrough is unverified.
+
+**Peer task (pending).** Using a throwaway account, search for `trasnit`, explain what “Possible matches” means, bookmark Transit Desk, sign out and find it again. Capture the classmate's actual observation in issue #2, record the decision, link the change and check, and have the same reviewer retry. The owner also participates as a reviewer in class.
+
 ## Plan
 
 **Question** · Can typo-tolerant search help first-year commuters find campus services from half-remembered names while keeping correctly spelled searches predictable?
@@ -50,7 +64,7 @@ Original sources checked November 12, 2026.
 
 AI helped draft the alternatives, fixture and planned checks. The source claims were checked against original documentation. Independently specified queries were used to check the baseline. Next, record the chosen threshold and actual search errors before deciding whether to add suggestions.
 
-## Verification
+## Review 1 verification at the planning stage
 
 | Status | Check and result |
 | --- | --- |
@@ -62,3 +76,4 @@ AI helped draft the alternatives, fixture and planned checks. The source claims 
 | Pending | Partner opens the Fuse.js source, tries the two baseline queries, explains the fallback choice and identifies an assumption. Record the observation, the owner decision and any linked change, then ask the partner to retry. [Open peer review issue](https://github.com/oa356/is218-class/issues/2) |
 
 [Course project brief](https://github.com/kaw393939/is218-studio/blob/main/docs/projects/individual.md)
+

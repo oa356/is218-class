@@ -80,6 +80,7 @@
     </div>
   </header>
   <main id="main" class="wrap">
+<section id="review-2" aria-labelledby="slice-heading"><h2 id="slice-heading">First working slice</h2><div class="copy"><p><strong>November 18, 2026.</strong> The local campus resource finder now supports sign-up, sign-in, search, private bookmarks and account changes. Search for <code>trasnit</code> to find Transit Desk among the possible matches.</p><p>Six Django tests passed. On five fictional services, both search structures returned the same answers for 12 queries. All four literal queries kept their order, all five typos found the intended entry in the first three suggestions, and all three unrelated queries returned no suggestions. A new process and session recovered the saved bookmark. Browser and classmate walkthroughs are pending.</p><p><a href="https://github.com/oa356/is218-class/tree/main/creative-exploration/app">Run the app</a> · <a href="https://github.com/oa356/is218-class/blob/main/creative-exploration/README.md#review-2--first-working-slice">Project record and design decision</a> · <a href="https://github.com/oa356/is218-class/blob/main/creative-exploration/app/finder/tests.py">Checks</a> · <a href="https://github.com/oa356/is218-class/issues/2">Peer task</a></p></div></section>
     <section id="scope" aria-labelledby="scope-heading">
       <h2 id="scope-heading">Audience and scope</h2>
       <div class="copy">
@@ -176,7 +177,7 @@
       <h2 id="next-heading">Next experiment</h2>
       <div class="copy">
         <p><strong>Planned experiment.</strong> Can a labeled “Possible matches” list recover mistyped queries without directing students to the wrong service? Run both approaches on 12 labeled queries with four exact or partial inputs, five typos and three unrelated queries. Include two similar catalog entries. Record the order of returned IDs against the expected IDs written before testing.</p>
-        <p><strong>Pass and stop rule.</strong> Add the fallback only if at least four of five typos place the intended entry in the top three, all four literal results keep their order, and no more than one unrelated query returns suggestions. If a 45-minute trial misses those thresholds or the ranking is unclear, keep literal search with a prompt to try a shorter term. The fuzzy comparison is pending.</p>
+        <p><strong>Pass and stop rule.</strong> Add the fallback only if at least four of five typos place the intended entry in the top three, all four literal results keep their order, and no more than one unrelated query returns suggestions. If a 45-minute trial misses those thresholds or the ranking is unclear, keep literal search with a prompt to try a shorter term. The Review 2 section records the subsequent Python search trial.</p>
         <p><strong>Pattern trial.</strong> Compare one search function with a conditional against two small search functions with a shared result format. Run the same query checks and see whether the second design lets the fallback change independently without making the result harder to trace.</p>
         <p><strong>Partner task.</strong> Open the Fuse.js source, explain the fallback choice, try <code>Chen</code> and <code>Jodran</code>, and identify one assumption or confusing step. The walkthrough is pending. <a href="https://github.com/oa356/is218-class/issues/2">Peer review issue</a></p>
       </div>
@@ -190,7 +191,7 @@
           <li><strong>Django · checked November 12, 2026.</strong> The auth docs describe password hashing and how password changes affect sessions. The CSRF guide shows how to protect internal POST forms. Both inform the account and bookmark checks. <a href="https://docs.djangoproject.com/en/5.2/topics/auth/default/#session-invalidation-on-password-change">Django authentication</a> · <a href="https://docs.djangoproject.com/en/5.2/howto/csrf/">Django CSRF guidance</a></li>
           <li><strong>SQLite · checked November 12, 2026.</strong> SQLite documents a local storage model and a tradeoff for concurrent writers. A single local app is the planned scope. <a href="https://www.sqlite.org/whentouse.html">SQLite use cases</a></li>
         </ul>
-        <p>AI helped draft the alternatives, fixture and test plan. The baseline was executed against expected results and technical claims were checked against the original docs. Search quality on service names and the planned account journey still need testing.</p>
+        <p>AI helped draft the alternatives, fixture and test plan. The baseline was executed against expected results and technical claims were checked against the original docs. The Review 2 section links the subsequent search and account checks.</p>
       </div>
     </section>
   </main>
@@ -224,3 +225,4 @@
   </script>
 </body>
 </html>
+

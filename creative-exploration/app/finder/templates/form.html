@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}{{ heading }} · Campus resource finder{% endblock %}
+{% block content %}<h1>{{ heading }}</h1><form method="post">{% csrf_token %}{{ form.as_div }}<button>{{ heading }}</button></form>{% endblock %}
