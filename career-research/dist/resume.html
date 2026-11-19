@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Public résumé draft of Olumuyiwa Akinde, a Business and Information Systems student at NJIT.">
+  <title>Olumuyiwa Akinde · Résumé draft</title>
+  <link rel="stylesheet" href="portfolio.css">
+  <style>
+    .resume-sheet {max-width: 54rem; margin: 2rem auto 3rem; padding: clamp(1.2rem,4vw,3.2rem); background: var(--panel); border: 1px solid var(--line)}
+    .resume-sheet h1 {font-size: clamp(2.6rem,6vw,4.8rem); line-height: 1.05; letter-spacing: -.052em; margin: .45rem 0}
+    .resume-sheet header > p + p {margin-top: .6rem}
+    .resume-sheet section {border-top: 1px solid var(--line); margin-top: 1.4rem; padding-top: 1rem}
+    .resume-sheet h2 {font-size: 2rem; line-height: 1.1; margin-bottom: .65rem}
+    .resume-sheet h3 {font: 700 1.04rem/1.4 var(--sans)}
+    .resume-sheet .item + .item {margin-top: .8rem}
+    .when {color: var(--muted); font-size: .92rem}
+    button.button {cursor: pointer; font-family: var(--sans)}
+    @page {size: letter; margin: .6in}
+    @media print {.resume-sheet {font-size: 10.5pt} .resume-sheet h1 {font-size: 28pt} .resume-sheet h2 {font-size: 15pt} .resume-sheet h3 {font-size: 11pt} .resume-sheet section {margin-top: .7rem; padding-top: .55rem} .resume-sheet .item {break-inside: avoid} .resume-sheet a {text-decoration: none}}
+    .resume-sheet .role-text {margin-top: .18rem}
+    .resume-sheet .profile-links {display: flex; flex-wrap: wrap; gap: .5rem 1rem; font-weight: 650}
+    @media (max-width: 44rem) {.resume-sheet {margin-block: 1rem}}
+    @media print {body, .resume-sheet {background: white} .masthead, .skip {display: none} .resume-sheet {border: 0; margin: 0 auto; padding: 0}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#resume">Skip to résumé</a>
+  <header class="masthead"><div class="wrap mast-inner">
+    <a class="wordmark" href="portfolio.html"><span class="monogram" aria-hidden="true">oa</span> Olu Akinde</a>
+    <nav aria-label="Résumé navigation"><a href="portfolio.html">Portfolio</a><button class="button secondary" type="button" onclick="window.print()">Print résumé</button></nav>
+  </div></header>
+  <main id="resume" class="resume-sheet">
+    <header>
+      <p class="eyebrow">Project résumé draft · November 2026</p>
+      <h1>Olumuyiwa Akinde</h1>
+      <p class="summary">Business &amp; Information Systems student at NJIT. I use Python, SQL, and Excel to investigate operational problems and build tools that make everyday tasks easier.</p>
+      <p class="profile-links"><a href="https://github.com/oa356">GitHub · oa356</a> <a href="https://www.linkedin.com/in/olumuyiwa-akinde-4950a9322">LinkedIn · Olumuyiwa Akinde</a></p>
+    </header>
+    <section>
+      <h2>Education</h2>
+      <div class="item"><h3>New Jersey Institute of Technology</h3><p>Business &amp; Information Systems · Undergraduate student</p></div>
+    </section>
+    <section>
+      <h2>Selected project experience</h2>
+      <div class="item"><h3><a href="https://github.com/oa356/residence-hall-operations-analysis">Residence Hall Maintenance Operations Analytics</a></h3>
+        <p class="when">Individual analytics project · Python, SQL, Excel</p>
+        <p class="role-text">Analyzed 3,199 synthetic maintenance requests and built a dashboard for assignment times and service targets. Recommended a separate triage queue for urgent repairs.</p></div>
+      <div class="item"><h3><a href="https://github.com/oa356/is218-class/tree/main/creative-exploration/app">Campus Resource Finder</a></h3>
+        <p class="when">Individual course project · Django, SQLite</p>
+        <p class="role-text">Developed a commuter search and bookmark workflow with AI assistance. Six automated tests checked search behavior, private bookmarks and account controls on a five-service directory.</p></div>
+      <div class="item"><h3><a href="https://github.com/oa356/is218-class/blob/main/group-customer-studio/SPEC.md">Bench &amp; Bolt repair intake</a></h3>
+        <p class="when">Team planning project · Requirements and acceptance tests</p>
+        <p class="role-text">Drafted the staff-intake scope, status rules and checks with AI assistance. Documented how a pending repair inquiry should appear on a receipt and in the coordinator’s queue. Implementation is pending.</p></div>
+      <div class="item"><h3><a href="https://github.com/oa356/is218-calculator-patterns/blob/main/STUDENT_README.md">Python command-line calculator</a></h3>
+        <p class="when">Individual course project · Python, pytest, GitHub Actions</p>
+        <p class="role-text">Extended the starter’s addition example to support subtraction, multiplication and division. The command history keeps successful calculations and the interface recovers from invalid input.</p></div>
+    </section>
+    <section>
+      <h2>Skills</h2>
+      <p>Python, SQL, Excel, Git/GitHub, Django, SQLite, automated testing, data cleaning, dashboard development, and requirements analysis.</p>
+    </section>
+  </main>
+</body>
+</html>

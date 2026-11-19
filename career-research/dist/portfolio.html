@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" data-layout="grid">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projects and résumé of Olumuyiwa Akinde, a Business and Information Systems student at NJIT.">
+  <title>Olu Akinde · Project portfolio</title>
+  <script>
+    const layout = new URLSearchParams(location.search).get("layout");
+    document.documentElement.dataset.layout = layout === "notebook" ? "notebook" : "grid";
+  </script>
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to portfolio</a>
+  <header class="masthead">
+    <div class="wrap mast-inner">
+      <a class="wordmark" href="#main"><span aria-hidden="true" class="monogram">oa</span> Olu Akinde</a>
+      <nav aria-label="Portfolio navigation">
+        <a href="#work">Work</a>
+        <a href="resume.html">Résumé</a>
+        <a href="https://github.com/oa356">GitHub</a>
+        <a href="https://www.linkedin.com/in/olumuyiwa-akinde-4950a9322">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="toolbar">
+      <p class="meta">Portfolio draft · November 2026</p>
+      <nav class="layout-nav" aria-label="Presentation layout">
+        <span class="layout-caption">Layout</span>
+        <a data-option="grid" href="portfolio.html?layout=grid">Evidence grid</a>
+        <a data-option="notebook" href="portfolio.html?layout=notebook">Field notebook</a>
+      </nav>
+    </div>
+    <section class="intro" aria-labelledby="name">
+      <div class="intro-copy">
+        <p class="eyebrow">Business &amp; Information Systems · NJIT</p>
+        <h1 id="name">Olu Akinde</h1>
+        <p class="lede">I study where everyday systems slow people down, from a repair request waiting for an assignment to a commuter searching for the right campus desk.</p>
+        <p class="opportunity">I’m looking for a summer 2027 internship in analytics or technology delivery.</p>
+        <div class="actions">
+          <a class="button primary" href="#work">Inspect project evidence</a>
+          <a class="button secondary" href="resume.html">Read my résumé</a>
+        </div>
+      </div>
+      <figure class="feature" aria-labelledby="chart-heading">
+        <figcaption>
+          <p class="eyebrow">From the maintenance analysis</p>
+          <h2 id="chart-heading">Which jobs fill the queue?</h2>
+          <p class="fig-desc">Four most common categories in 3,199 synthetic requests.</p>
+        </figcaption>
+        <ol class="bars" aria-label="Request counts by category">
+          <li><span>Plumbing</span><span class="track" aria-hidden="true"><i style="--count:676"></i></span><strong>676</strong></li>
+          <li><span>HVAC</span><span class="track" aria-hidden="true"><i style="--count:508"></i></span><strong>508</strong></li>
+          <li><span>Furniture</span><span class="track" aria-hidden="true"><i style="--count:457"></i></span><strong>457</strong></li>
+          <li><span>Electrical</span><span class="track" aria-hidden="true"><i style="--count:429"></i></span><strong>429</strong></li>
+        </ol>
+        <a class="figure-link" href="https://github.com/oa356/residence-hall-operations-analysis/blob/main/reports/tables/category_summary.csv">View the category data</a>
+      </figure>
+    </section>
+    <section id="work" aria-labelledby="work-heading">
+      <div class="section-head">
+        <h2 id="work-heading">Selected work</h2>
+        <p>Individual, analytics, and team projects</p>
+      </div>
+      <div class="cases">
+        <article class="case" id="finder">
+          <header class="case-head">
+            <p class="eyebrow">Individual application</p>
+            <h3>Campus Resource Finder</h3>
+            <p class="stage">Working local app · November 2026</p>
+          </header>
+          <div class="case-story">
+            <p>A commuter remembers “transit” but types <code>trasnit</code>. The finder suggests Transit Desk and lets the student bookmark it for the next visit.</p>
+            <p>I chose the commuter workflow and defined what a useful suggestion should do. Codex implemented the Django app and ran the checks. The search shows literal matches first and offers suggestions when those come up empty.</p>
+          </div>
+          <div class="case-evidence">
+            <h4>What the checks showed</h4>
+            <p>Six tests passed. All five typo cases returned the intended service in the first three suggestions. A fresh session recovered the saved bookmark. The directory has five fictional services.</p>
+            <div class="links">
+              <a href="https://github.com/oa356/is218-class/tree/main/creative-exploration/app">App and setup</a>
+              <a href="https://github.com/oa356/is218-class/blob/main/creative-exploration/app/finder/tests.py">Test cases</a>
+              <a href="https://github.com/oa356/is218-class/blob/main/creative-exploration/README.md#review-2--first-working-slice">Recorded results</a>
+            </div>
+          </div>
+        </article>
+        <article class="case" id="maintenance">
+          <header class="case-head">
+            <p class="eyebrow">Operations analytics</p>
+            <h3>Residence Hall Maintenance</h3>
+            <p class="stage">Completed analysis · Synthetic data</p>
+          </header>
+          <div class="case-story">
+            <p>Which jobs wait the longest for an owner? I cleaned a simulated residence-life work queue, analyzed assignment times with Python and SQL, and built an Excel dashboard.</p>
+            <p>Tracking assignment separately from resolution helped distinguish a delay in routing a request from time spent on the repair itself.</p>
+          </div>
+          <div class="case-evidence">
+            <h4>What the data showed</h4>
+            <p>In 3,200 source rows, one request ID appeared twice. The cleaned data contained 3,199 requests and averaged 5.58 hours to assignment. I recommended a separate triage queue for urgent work. Its real-world effect is untested.</p>
+            <div class="links">
+              <a href="https://github.com/oa356/residence-hall-operations-analysis">Project repository</a>
+              <a href="https://github.com/oa356/residence-hall-operations-analysis/blob/main/reports/metrics.json">KPI results</a>
+              <a href="https://github.com/oa356/residence-hall-operations-analysis/blob/main/dashboard/maintenance_operations_dashboard.xlsx">Excel dashboard</a>
+            </div>
+          </div>
+        </article>
+        <article class="case" id="bench-bolt">
+          <header class="case-head">
+            <p class="eyebrow">Group project</p>
+            <h3>Bench &amp; Bolt</h3>
+            <p class="stage">Planning draft · Implementation pending</p>
+          </header>
+          <div class="case-story">
+            <p>A fictional bike shop needs to track walk-in repair inquiries. A rider who asks for Tuesday should leave with a reference number and know the shop still needs to review the request.</p>
+            <p>With AI help, I drafted the scope comparison, status rules, and acceptance checks. My proposed build responsibility is intake and validation. The team's proposed second slice is the coordinator's queue and decisions.</p>
+          </div>
+          <div class="case-evidence">
+            <h4>What remains to test</h4>
+            <p>The planned team check traces a Tuesday inquiry from its receipt to the queue. Both screens should show the same reference and “Pending review.” The work split awaits team confirmation and the end-to-end check is pending.</p>
+            <div class="links">
+              <a href="https://github.com/oa356/is218-class/blob/main/group-customer-studio/SPEC.md">Team spec and contributions</a>
+              <a href="https://github.com/oa356/is218-class/issues/3">Group review issue</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="contact" id="profiles" aria-labelledby="profiles-heading">
+      <div><p class="eyebrow">Professional profiles</p><h2 id="profiles-heading">Résumé &amp; contact</h2></div>
+      <div class="contact-links">
+        <a href="resume.html">Read my résumé draft</a>
+        <a href="https://www.linkedin.com/in/olumuyiwa-akinde-4950a9322">Connect on LinkedIn</a>
+        <a href="https://github.com/oa356">My GitHub profile</a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap foot-inner"><p>Olumuyiwa Akinde · NJIT</p><nav aria-label="Portfolio sources"><a href="index.html">Career research</a><a href="https://github.com/oa356/is218-class/tree/main/career-research">Portfolio repository</a><a href="https://github.com/oa356/is218-class/blob/main/career-research/README.md#review-2-portfolio-draft">Project record</a></nav></div></footer>
+  <script>
+    const currentLayout = document.documentElement.dataset.layout;
+    document.querySelector('[data-option="' + currentLayout + '"]').setAttribute("aria-current", "page");
+  </script>
+</body>
+</html>

@@ -1,8 +1,29 @@
-# IS218 Portfolio Plan
+# IS218 Portfolio Record
 
 [Career research website](https://is218-ai-career-research.akindemuyi18.chatgpt.site) · [Site source](dist/index.html) · [Verification log](docs/checks.md) · [Course portfolio brief](https://github.com/kaw393939/is218-studio/blob/main/docs/projects/portfolio.md)
 
 This is the first portfolio record, started at Review 1 and intended to carry forward through later reviews. The research site documents the evidence and choices for a future portfolio. The full career reflection and personal eligibility discussion belong in Canvas. [Creative Project Plan research site](https://is218-directory-search-exploration.akindemuyi18.chatgpt.site)
+
+## Review 2 portfolio draft
+
+**November 19, 2026.** A technical internship reviewer can inspect three project stories, see what I contributed and open my résumé or professional profiles.
+
+| Presentation | What a reader sees | Why try it |
+| --- | --- | --- |
+| [A · Evidence grid](https://is218-ai-career-research.akindemuyi18.chatgpt.site/portfolio.html?layout=grid) | Three cards put the project stage, contribution, result and supporting links together. | The default. A reader can compare the individual app, analysis and team plan side by side on a wide screen. |
+| [B · Field notebook](https://is218-ai-career-research.akindemuyi18.chatgpt.site/portfolio.html?layout=notebook) | One entry per row, with the story beside a margin for evidence or pending checks. | A reader can follow one decision from problem to evidence before moving to the next project. |
+
+The two links open the same HTML page. A layout setting changes the presentation. Both use the same introduction, chart, case studies, résumé, profiles and **Inspect project evidence** action. The grid is the provisional choice for a reviewer scanning several projects. The reader comparison is still pending.
+
+- [Campus Resource Finder](https://is218-ai-career-research.akindemuyi18.chatgpt.site/portfolio.html#finder) shows the working individual app, AI assistance, six recorded tests and the five-service limit.
+- [Residence Hall Maintenance](https://is218-ai-career-research.akindemuyi18.chatgpt.site/portfolio.html#maintenance) follows 3,200 synthetic rows through the duplicate-ID check to a routing recommendation.
+- [Bench & Bolt](https://is218-ai-career-research.akindemuyi18.chatgpt.site/portfolio.html#bench-bolt) identifies my contribution to scope, rules and acceptance checks. Team ownership confirmation and implementation are pending.
+
+[Printable project résumé](https://is218-ai-career-research.akindemuyi18.chatgpt.site/resume.html) · [GitHub](https://github.com/oa356) · [LinkedIn](https://www.linkedin.com/in/olumuyiwa-akinde-4950a9322) · [Portfolio source](dist/portfolio.html)
+
+**Checked.** In a browser preview, the grid showed three columns and the notebook showed three rows. Their visible main text matched. Keyboard activation opened the work section and the alternate layout. The résumé and both profile links were present. The public résumé summarizes project experience and offers a print view. Codex helped draft the layouts and résumé and run the checks. [Verification log](docs/checks.md#review-2-portfolio-checks)
+
+**Classmate task.** Use both layouts to find the group project's current status, open the résumé and locate GitHub and LinkedIn. Name the first point of hesitation and which layout made the task easier. Record the decision, link any accepted change and check, then have the same reader retry. [Portfolio review issue #1](https://github.com/oa356/is218-class/issues/1)
 
 ## Research question and next step
 

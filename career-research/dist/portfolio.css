@@ -1,0 +1,113 @@
+:root {
+  color-scheme: light;
+  --ink: #122b23;
+  --green: #153b2e;
+  --muted: #425c50;
+  --line: #cad3c8;
+  --paper: #f7f9f4;
+  --panel: #fff;
+  --lime: #d9f28b;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, ui-monospace, monospace;
+}
+*, *::before, *::after {box-sizing: border-box}
+html {scroll-margin-top: 1rem}
+body {margin: 0; color: var(--ink); background: var(--paper); font: 1rem/1.58 var(--sans)}
+h1, h2, h3, h4, p, figure, ol {margin: 0}
+a {color: inherit; text-underline-offset: .22em; text-decoration-thickness: .07em}
+a:hover {text-decoration-thickness: .16em}
+a:focus-visible {outline: 3px solid #a34612; outline-offset: 4px}
+.wrap {width: min(78rem, calc(100% - 6rem)); margin-inline: auto}
+.skip {position: fixed; left: 1rem; top: .5rem; z-index: 10; padding: .55rem 1rem; background: white; transform: translateY(-180%)}
+.skip:focus {transform: translateY(0)}
+.masthead {border-bottom: 1px solid var(--line); background: var(--panel)}
+.mast-inner, .foot-inner {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem 2rem; padding-block: .9rem}
+nav, .links, .actions, .contact-links {display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1.4rem}
+.mast-inner nav a, .foot-inner nav a {padding-block: .3rem; font-weight: 600}
+.wordmark {display: inline-flex; align-items: center; gap: .7rem; font-weight: 750; text-decoration: none}
+.monogram {display: grid; place-content: center; width: 2.15rem; height: 2.15rem; padding-right: .08rem; border-radius: 50%; background: var(--green); color: var(--lime); font: italic 1.45rem/.95 var(--serif); letter-spacing: -.09em}
+.toolbar, .section-head {display: flex; align-items: center; justify-content: space-between; gap: .8rem 1.5rem; flex-wrap: wrap}
+.toolbar {padding-top: 1.5rem}
+.meta, .layout-caption, .stage, .fig-desc, .section-head > p {color: var(--muted); font-size: .9rem}
+.layout-nav {gap: .18rem; padding: .18rem; border: 1px solid var(--line); border-radius: .45rem; background: var(--panel)}
+.layout-caption {padding: .28rem .5rem; font-weight: 600}
+.layout-nav a {padding: .32rem .6rem; border-radius: .26rem; font-size: .89rem; font-weight: 650; text-decoration: none}
+.layout-nav a:hover {text-decoration: underline}
+.layout-nav a[aria-current="page"] {background: var(--green); color: white}
+.intro {display: grid; grid-template-columns: minmax(0,1.22fr) minmax(0,.86fr); align-items: center; gap: clamp(2rem,5vw,5.7rem); padding-block: clamp(2.5rem,5.6vw,5rem)}
+.eyebrow {color: var(--muted); font: 600 .8rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: .095em}
+h1, h2, h3 {font-family: var(--serif); font-weight: 400; text-wrap: balance}
+.intro h1 {margin: .4rem 0 1.05rem; font-size: clamp(3.7rem,7.8vw,7.3rem); line-height: .99; letter-spacing: -.065em}
+.lede {max-width: 44ch; font-size: clamp(1.12rem,1.65vw,1.42rem); line-height: 1.48}
+.opportunity {max-width: 52ch; margin-top: .8rem; color: var(--muted)}
+.actions {margin-top: 1.45rem; gap: .55rem}
+.button {display: inline-block; padding: .62rem .94rem; border: 1px solid var(--green); border-radius: .3rem; font-size: .95rem; font-weight: 650; text-decoration: none}
+.button:hover {text-decoration: underline}
+.primary {background: var(--green); color: #fff}
+.secondary {background: var(--panel)}
+.feature {padding: clamp(1.2rem,2.4vw,2.1rem); background: var(--green); color: #fff; border-radius: .5rem}
+.feature .eyebrow {color: var(--lime)}
+.feature h2 {font-size: clamp(1.9rem,3.4vw,3.15rem); line-height: 1.07; margin: .65rem 0 .45rem; letter-spacing: -.042em}
+.fig-desc {color: #e1ece1; max-width: 40ch}
+.bars {list-style: none; padding: 0; margin: 1.3rem 0 1.05rem; display: grid; gap: .55rem}
+.bars li {display: grid; grid-template-columns: 5.2rem 1fr 2rem; align-items: center; gap: .6rem; font-size: .88rem}
+.bars strong {font: 550 .87rem/1.2 var(--mono); text-align: right}
+.track {background: #365448; height: .61rem; border-radius: .1rem}
+.track i {display: block; width: calc(var(--count) / 700 * 100%); height: 100%; background: #a6c6ae; border-radius: inherit}
+.bars li:first-child i {background: var(--lime)}
+.figure-link {font-size: .88rem; font-weight: 600; color: #f0f6e7}
+.feature a:focus-visible {outline-color: var(--lime)}
+.section-head {padding: 1.55rem 0 1.15rem; border-top: 2px solid var(--ink); align-items: baseline}
+.section-head h2, .contact h2 {font-size: clamp(2.2rem,4vw,3.4rem); line-height: 1.07; letter-spacing: -.047em}
+.cases {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem}
+.case {min-width: 0; display: flex; flex-direction: column; padding: clamp(1.05rem,2vw,1.6rem); background: var(--panel); border: 1px solid var(--line); border-top: 4px solid #35614c; border-radius: .3rem}
+.case h3 {font-size: clamp(1.8rem,2.5vw,2.55rem); line-height: 1.04; letter-spacing: -.04em; margin: .55rem 0}
+.case-head {padding-bottom: 1rem}
+.case-story p + p {margin-top: .75rem}
+.case-evidence {margin-top: auto; padding-top: 1.1rem}
+.case h4 {border-top: 1px solid var(--line); padding-top: .85rem; font-size: 1rem; margin-bottom: .3rem}
+.case-evidence p {color: var(--muted)}
+.links {gap: .35rem .95rem; margin-top: .8rem}
+.links a, .contact-links a {font-weight: 650}
+code {font-size: .94em; font-family: var(--mono); background: #e8efe7; border-radius: .2rem; padding: .02rem .18rem}
+.contact {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.4rem; margin: 2.6rem 0 3.4rem; padding: 1.8rem 0; border-block: 1px solid var(--line)}
+.contact h2 {font-size: 2.3rem; margin-top: .25rem}
+.contact-links {gap: .5rem 1.15rem}
+footer {border-top: 1px solid var(--line); background: var(--panel); color: var(--muted)}
+.foot-inner {font-size: .9rem; padding-block: 1.25rem}
+html[data-layout="notebook"] {--paper: #fbf8ee; --panel: #fffdf6; --line: #c7c7b9; --ink: #212d39; --green: #273a49; --muted: #4d5b62; --lime: #f4dc94}
+html[data-layout="notebook"] .intro {grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr)}
+html[data-layout="notebook"] .intro h1 {font-style: italic}
+html[data-layout="notebook"] .feature {background: #f1eedf; color: var(--ink); border: 1px solid var(--line); border-left: 4px solid #ad793b; border-radius: 0}
+html[data-layout="notebook"] .feature .eyebrow, html[data-layout="notebook"] .fig-desc, html[data-layout="notebook"] .figure-link {color: var(--muted)}
+html[data-layout="notebook"] .track {background: #d8d8c8}
+html[data-layout="notebook"] .track i {background: #687983}
+html[data-layout="notebook"] .bars li:first-child i {background: #8a5828}
+html[data-layout="notebook"] .cases {display: block}
+html[data-layout="notebook"] .case {display: grid; grid-template-columns: .8fr 1.1fr 1fr; gap: 2rem; padding: 1.7rem 0; background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0}
+html[data-layout="notebook"] .case-head {border-left: 3px solid #ad793b; padding: 0 0 0 1rem; align-self: start}
+html[data-layout="notebook"] .case-story {font-family: var(--serif); font-size: 1.13rem}
+html[data-layout="notebook"] .case-evidence {margin: 0; padding: 0}
+html[data-layout="notebook"] .case h4 {padding: 0; border: 0}
+html[data-layout="notebook"] code {background: #ede9db}
+@media (max-width: 62rem) {
+  .wrap {width: calc(100% - 3rem)}
+  .cases {grid-template-columns: 1fr}
+  .case {display: grid; grid-template-columns: .8fr 1.2fr; gap: 0 1.4rem}
+  .case-head {grid-row: span 2}
+  html[data-layout="notebook"] .case {grid-template-columns: .65fr 1.35fr}
+  html[data-layout="notebook"] .case-evidence {grid-column: 2}
+  .intro, html[data-layout="notebook"] .intro {grid-template-columns: 1fr .9fr; gap: 1.65rem}
+}
+@media (max-width: 44rem) {
+  .wrap {width: calc(100% - 2rem)}
+  .mast-inner nav {gap: .25rem .9rem; font-size: .92rem}
+  .toolbar {padding-top: 1rem}
+  .intro, html[data-layout="notebook"] .intro {grid-template-columns: 1fr; gap: 1.8rem}
+  .intro h1 {font-size: clamp(3.65rem,14vw,5.4rem)}
+  .case, html[data-layout="notebook"] .case {display: block}
+  html[data-layout="notebook"] .case-head {margin-bottom: .9rem}
+  html[data-layout="notebook"] .case-evidence {margin-top: .9rem}
+  .contact {margin-bottom: 1.8rem}
+}

@@ -1,4 +1,21 @@
-# Portfolio Plan verification
+# Portfolio verification
+
+## Review 2 portfolio checks
+
+November 19, 2026. These are source checks and browser-preview observations. A human portfolio walkthrough and reviewer retry are pending.
+
+| Check | Observed result |
+| --- | --- |
+| Find work from the research homepage | Opened **Portfolio draft**. Activating **Inspect project evidence** with Enter reached the work section. The three headings identified Campus Resource Finder, Residence Hall Maintenance and Bench & Bolt. |
+| Compare the two presentations | Switched to **Field notebook** with Enter. Normalized visible main text matched between layouts. Browser geometry placed the three grid cards on the same row and the three notebook entries on separate rows. |
+| Find résumé and profiles | The portfolio header exposed Résumé, GitHub and LinkedIn. From the notebook, **Read my résumé** opened Olumuyiwa Akinde's education, project experience and skills. Both layouts use the student's GitHub account and the LinkedIn profile URL from the source résumé. LinkedIn's public page blocked automated retrieval, so signed-out profile visibility is unverified. |
+| Check the public résumé | The HTML résumé includes education, four linked projects, skills and both professional profiles. Print styles omit the site navigation. A physical printout is untested. |
+| Check source navigation | All 28 local link and stylesheet references resolved across the three HTML pages, including 17 on-page links. |
+| Check the analytics case against its evidence | Recounted 3,200 source rows and 3,199 distinct request IDs. The category table lists Plumbing 676, HVAC 508, Furniture 457 and Electrical 429. [Source data](https://github.com/oa356/residence-hall-operations-analysis/blob/main/data/raw/maintenance_requests_raw.csv) · [Chart data](https://github.com/oa356/residence-hall-operations-analysis/blob/main/reports/tables/category_summary.csv) |
+| Distinguish individual and team work | The individual case links the implementation, tests and dated [app record](../../creative-exploration/README.md). The group case links the [team spec](../../group-customer-studio/SPEC.md) and labels implementation as pending. |
+| Human comparison | Pending. The reader task, decision and retry belong in [portfolio issue #1](https://github.com/oa356/is218-class/issues/1). |
+
+## Review 1 plan checks
 
 Checks recorded November 11, 2026.
 
