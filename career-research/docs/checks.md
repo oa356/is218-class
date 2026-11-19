@@ -2,7 +2,7 @@
 
 ## Review 2 portfolio checks
 
-November 19, 2026. These are source checks and browser-preview observations. A human portfolio walkthrough and reviewer retry are pending.
+November 19, 2026. These checks cover the source, the browser preview and the published draft. A human portfolio walkthrough and reviewer retry are pending.
 
 | Check | Observed result |
 | --- | --- |
@@ -13,6 +13,7 @@ November 19, 2026. These are source checks and browser-preview observations. A h
 | Check source navigation | All 28 local link and stylesheet references resolved across the three HTML pages, including 17 on-page links. |
 | Check the analytics case against its evidence | Recounted 3,200 source rows and 3,199 distinct request IDs. The category table lists Plumbing 676, HVAC 508, Furniture 457 and Electrical 429. [Source data](https://github.com/oa356/residence-hall-operations-analysis/blob/main/data/raw/maintenance_requests_raw.csv) · [Chart data](https://github.com/oa356/residence-hall-operations-analysis/blob/main/reports/tables/category_summary.csv) |
 | Distinguish individual and team work | The individual case links the implementation, tests and dated [app record](../../creative-exploration/README.md). The group case links the [team spec](../../group-customer-studio/SPEC.md) and labels implementation as pending. |
+| Published reader path | Opened the public research home and followed **Portfolio draft**. [Evidence grid](https://is218-ai-career-research.akindemuyi18.chatgpt.site/portfolio?layout=grid) and [field notebook](https://is218-ai-career-research.akindemuyi18.chatgpt.site/portfolio?layout=notebook) displayed identical main text. The grid cards shared a row and the notebook entries stacked. From the live notebook, the [résumé](https://is218-ai-career-research.akindemuyi18.chatgpt.site/resume) opened and showed the print control and LinkedIn link. [Implementation commit](https://github.com/oa356/is218-class/commit/540012d5a995dce8970b826f97a8b0f18d348f91) |
 | Human comparison | Pending. The reader task, decision and retry belong in [portfolio issue #1](https://github.com/oa356/is218-class/issues/1). |
 
 ## Review 1 plan checks
